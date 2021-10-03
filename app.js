@@ -4,6 +4,7 @@ const taskList = document.querySelector('.collection');
 const clearBtn = document.querySelector('clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
+const deleteBtn = document.querySelector('.fa fa-remove')
 
 
 //Load all event listeners
@@ -13,7 +14,8 @@ loadEventListeners();
 function loadEventListeners(){
     //add task event
     form.addEventListener('submit', addTask);
-    form.addEventListener('click', removeTask);
+    //remove task event
+    taskList.addEventListener('click', removeTask);
 }
 
 //add task
@@ -46,5 +48,8 @@ function addTask(e){
 
 //remove task
 function removeTask(e){
+    if(e.target.parentElement.classList.contains('delete-item')){
+        e.target.parentNode.parentNode.remove();
+    }
 
 }
