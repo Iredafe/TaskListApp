@@ -49,7 +49,9 @@ function addTask(e){
 //remove task
 function removeTask(e){
     if(e.target.parentElement.classList.contains('delete-item')){
-        e.target.parentNode.parentNode.remove();
+        if(confirm('Are You Sure?'))
+    {e.target.parentNode.parentNode.remove();
+        alert('Task Deleted');
     }
-
+    }
 }
