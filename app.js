@@ -9,10 +9,11 @@ const taskInput = document.querySelector('#task');
 //Load all event listeners
 loadEventListeners();
 
-//load event listeners
+//load event listeners logic
 function loadEventListeners(){
     //add task event
-    form.addEventListener('submit', addTask)
+    form.addEventListener('submit', addTask);
+    form.addEventListener('click', removeTask);
 }
 
 //add task
@@ -20,9 +21,6 @@ function addTask(e){
     if(taskInput.value === ''){
         alert('Add a Task');
     }
-
-    e.preventDefault();
-
     //create li element
     const li = document.createElement('li');
     //add class
@@ -39,4 +37,14 @@ function addTask(e){
     li.appendChild(link);
     //append li to ul
     taskList.appendChild(li);
+
+    //clear input
+    taskInput.value='';
+
+    e.preventDefault();
+}
+
+//remove task
+function removeTask(e){
+
 }
