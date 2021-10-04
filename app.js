@@ -43,12 +43,25 @@ function addTask(e){
     //append li to ul
     taskList.appendChild(li);
 
+    //store in local storage
+    storeTaskInLocalStorage();
     //clear input
     taskInput.value='';
 
     e.preventDefault();
 }
 
+//store task
+function storeTaskInLocalStorage(){
+    let tasks;
+    if(localStorage.getItem('tasks')===null){
+        tasks = [];
+
+    } else{
+        tasks = JSON.parse(localStorage.getItem('tasks'))
+    }
+
+}
 //remove task
 function removeTask(e){
     if(e.target.parentElement.classList.contains('delete-item')){
