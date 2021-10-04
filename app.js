@@ -52,7 +52,7 @@ function addTask(e){
 }
 
 //store task
-function storeTaskInLocalStorage(){
+function storeTaskInLocalStorage(task){
     let tasks;
     if(localStorage.getItem('tasks')===null){
         tasks = [];
@@ -60,6 +60,8 @@ function storeTaskInLocalStorage(){
     } else{
         tasks = JSON.parse(localStorage.getItem('tasks'))
     }
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 
 }
 //remove task
