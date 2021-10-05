@@ -73,15 +73,21 @@ function removeTask(e){
     }
     }
 }
-
+ 
 //clear task
 function clearTasks(e){
     console.log(taskList.firstChild)
   while(taskList.firstChild){
       taskList.removeChild(taskList.firstChild)
   }
+
+  clearTasksFromLocalStorage();
 }
 
+//clear tasks from local storage
+function clearTasksFromLocalStorage(){
+    localStorage.clear();
+}
 //filter task
 function filterTasks(e){
 
