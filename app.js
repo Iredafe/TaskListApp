@@ -53,7 +53,7 @@ function addTask(e){
     e.preventDefault();
 }
 
-//store task
+//store task in LS
 function storeTaskInLocalStorage(task){
     let tasks;
     if(localStorage.getItem('tasks')===null){
@@ -70,10 +70,26 @@ function storeTaskInLocalStorage(task){
 function removeTask(e){
     if(e.target.parentElement.classList.contains('delete-item')){
         if(confirm('Are You Sure?'))
-    {e.target.parentNode.parentNode.remove();
+    {e.target.parentElement.parentElement.remove();
         alert('Task Deleted');
     }
+    //remove from LS
+    removeTaskFromLocalStorage(e.target.parentElement.parentElement){
+          let tasks;
+    if(localStorage.getItem('tasks')===null){
+        tasks = [];
+
+    } else{
+        tasks = JSON.parse(localStorage.getItem('tasks'))
     }
+    
+    }
+    }
+}
+
+//remove task from LS
+function removeTaskFromLocalStorage(taskItem){
+
 }
  
 //clear task
