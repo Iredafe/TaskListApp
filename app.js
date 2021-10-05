@@ -74,23 +74,28 @@ function removeTask(e){
         alert('Task Deleted');
     }
     //remove from LS
-    removeTaskFromLocalStorage(e.target.parentElement.parentElement){
-          let tasks;
+    removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+    }
+}
+
+//remove task from LS
+function removeTaskFromLocalStorage(taskItem){
+    let tasks;
     if(localStorage.getItem('tasks')===null){
         tasks = [];
 
     } else{
         tasks = JSON.parse(localStorage.getItem('tasks'))
     }
+    tasks.forEach(function(task, index){
+        if(taskItem.textContent === task){
+            tasks.splice(index, 1);
+        }
+    });
     
     }
-    }
-}
 
-//remove task from LS
-function removeTaskFromLocalStorage(taskItem){
 
-}
  
 //clear task
 function clearTasks(e){
