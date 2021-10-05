@@ -11,6 +11,8 @@ loadEventListeners();
 
 //load event listeners logic
 function loadEventListeners(){
+    //dom lad event
+    document.addEventListener('DOMContentLoaded', getTasks)
     //add task event
     form.addEventListener('submit', addTask);
     //remove task event
@@ -87,6 +89,35 @@ function clearTasks(e){
 //clear tasks from local storage
 function clearTasksFromLocalStorage(){
     localStorage.clear();
+}
+
+//get tasks from Local storage
+function getTasks(e){
+let tasks;
+if(localStorage.getItem('tasks') === null){
+    tasks = [];
+}else{
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+}
+tasks.forEach(function(task){
+        //create li element
+        const li = document.createElement('li');
+        //add class
+        li.className='collection-item';
+        //create text node and append
+        li.appendChild(document.createTextNode(task));
+        //create new link
+        const link = document.createElement('a');
+        //add class
+        link.className='delete-item secondary-content';
+        //add icon html
+        link.innerHTML = '<i class="fa fa-remove"></i>';
+        //append the link to li
+        li.appendChild(link);
+         //append li to ul
+    taskList.appendChild(li);
+
+})
 }
 //filter task
 function filterTasks(e){
